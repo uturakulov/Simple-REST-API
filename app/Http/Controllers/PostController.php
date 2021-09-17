@@ -35,6 +35,11 @@ class PostController extends Controller
         return $posts->get();
     }
 
+    public function show($id)
+    {
+        return Post::where('id', $id)->get();
+    }
+
     public function store(PostRequest $request)
     {
         Post::create($request->validated());
