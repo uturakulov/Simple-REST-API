@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
+use App\Http\Resources\PostResource;
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class PostController extends Controller
             $posts->where('created_at', $request->created_at);
         }
 
-        return $posts->get();
+        return PostResource::collection($posts->get());
     }
 
     public function show($id)
